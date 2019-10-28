@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="menu_colors">
+        <item>#445A65</item>
+        <item>#00796B</item>
+        <item>#8C6E62</item>
+        <item>#6E4C42</item>
+    </array>
+</resources>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu android:id="@+id/bottom_navigation_view"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:layout_marginBottom="0dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/menu_location"
+        android:icon="@drawable/location_image"
+        android:title="@string/location" />
+
+    <item
+        android:id="@+id/menu_condition"
+        android:icon="@drawable/running_man"
+        android:title="@string/condition" />
+
+    <item
+        android:id="@+id/menu_pulse"
+        android:icon="@drawable/health_icon"
+        android:title="@string/physical" />
+
+    <item
+        android:id="@+id/menu_senior"
+        android:icon="@drawable/group_people"
+        android:title="@string/senior" />
+</menu>
