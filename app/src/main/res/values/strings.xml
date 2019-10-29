@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">Opiekun</string>
     <string name="successfull_login">Pomyślnie zalogowano</string>
-    <string name="location">Sprawdź lokalizację</string>
-    <string name="condition">Sprawdź kondycję</string>
-    <string name="physical">Sprawdź puls</string>
-    <string name="senior">Wybierz seniora</string>
+    <string name="location">Lokalizacja</string>
+    <string name="condition">Kondycja</string>
+    <string name="physical">Puls</string>
+    <string name="senior">Senior</string>
 
 </resources>
