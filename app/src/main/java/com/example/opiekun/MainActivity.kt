@@ -4,10 +4,9 @@ import android.app.Dialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.Menu
-import android.view.MenuItem
-import android.view.Window
+import android.view.*
 import android.widget.Button
+import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.pawegio.kandroid.find
 import com.pawegio.kandroid.toast
@@ -62,24 +61,66 @@ class MainActivity : AppCompatActivity() {
             editor.apply()
             }
 
-        reveal.setOnNavigationItemSelectedListener {
-            Log.d("pizdaogien", it.toString())
-         //   Log.d("pizdao", menuLocationItem.toString())
-         //   Log.d("pizdao", menuConditionItem.toString())
-          //  Log.d("pizdao", menuPulseItem.toString())
-         //   Log.d("pizdao", menuSeniorItem.toString())
-          //  when(it){
-           //     menuLocationItem -> toast("lokalizacja")
-           //     menuConditionItem -> toast("kondycja")
-            //    menuPulseItem -> toast("puls")
-            //    menuSeniorItem ->toast("senior")
+        reveal.setOnNavigationItemSelectedListener (mOnNavigationItemSelectedListener)
 
-           // }
-            // Do your custom operations on item selection here (e.g display a fragment)
-            // ...
-            // Allow selection
-            true
         }
+    private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->
+        when (menuItem.itemId) {
+            R.id.menu_location -> {
+                toast("lokalizacja")
+                //val fragment = BlogFragment()
+               // supportFragmentManager.beginTransaction().replace(R.id.container, fragment, fragment.javaClass.getSimpleName())
+               //     .commit()
+                return@OnNavigationItemSelectedListener true
+            }
+            R.id.menu_condition -> {
+                toast("kondycja")
+               // val fragment = ChapterFragment()
+                //supportFragmentManager.beginTransaction().replace(R.id.container, fragment, fragment.javaClass.getSimpleName())
+               //     .commit()
+                return@OnNavigationItemSelectedListener true
+            }
+            R.id.menu_senior -> {
+                toast("senior")
+              //  val fragment = StoreFragment()
+               // supportFragmentManager.beginTransaction().replace(R.id.container, fragment, fragment.javaClass.getSimpleName())
+                //    .commit()
+                return@OnNavigationItemSelectedListener true
+            }
+            R.id.menu_pulse -> {
+                toast("puls")
+                //val fragment = StoreFragment()
+               // supportFragmentManager.beginTransaction().replace(R.id.container, fragment, fragment.javaClass.getSimpleName())
+                //    .commit()
+                return@OnNavigationItemSelectedListener true
+            }
         }
+        false
+    }
+    /*class BlogFragment : Fragment() {
+        override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
+            inflater.inflate(R.layout.fragment_common, container, false)
+        override fun onActivityCreated(savedInstanceState: Bundle?) {
+            super.onActivityCreated(savedInstanceState)
+        }
+    }
+
+
+    class ChapterFragment : Fragment() {
+        override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
+            inflater.inflate(R.layout.fragment_common, container, false)
+        override fun onActivityCreated(savedInstanceState: Bundle?) {
+            super.onActivityCreated(savedInstanceState)
+        }
+    }
+
+
+    class StoreFragment : Fragment() {
+        override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
+            inflater.inflate(R.layout.fragment_common, container, false)
+        override fun onActivityCreated(savedInstanceState: Bundle?) {
+            super.onActivityCreated(savedInstanceState)
+        }
+    }*/5
     }
 

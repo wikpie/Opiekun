@@ -8,11 +8,10 @@
     app:layout_constraintStart_toStartOf="parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
     <item
-        android:id="@+id/menu_location"
-        android:icon="@drawable/location_image"
-        android:title="@string/location" />
+        android:id="@+id/menu_senior"
+        android:icon="@drawable/group_people"
+        android:title="@string/senior" />
 
     <item
         android:id="@+id/menu_condition"
@@ -25,7 +24,7 @@
         android:title="@string/physical" />
 
     <item
-        android:id="@+id/menu_senior"
-        android:icon="@drawable/group_people"
-        android:title="@string/senior" />
+        android:id="@+id/menu_location"
+        android:icon="@drawable/location_image"
+        android:title="@string/location" />
 </menu>
