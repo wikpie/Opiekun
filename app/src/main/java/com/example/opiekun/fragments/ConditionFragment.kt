@@ -1,4 +1,4 @@
-package com.example.opiekun.Fragments
+package com.example.opiekun.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,7 +10,7 @@ import com.example.opiekun.R
 
 class ConditionFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-        inflater.inflate(R.layout.fragment_location, container, false)
+        inflater.inflate(R.layout.fragment_condition, container, false)
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
     }

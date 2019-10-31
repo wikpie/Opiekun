@@ -3,18 +3,12 @@ package com.example.opiekun
 import android.app.Dialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import android.widget.Button
-import androidx.fragment.app.Fragment
-import com.example.opiekun.Fragments.ConditionFragment
-import com.example.opiekun.Fragments.LocationFragment
-import com.example.opiekun.Fragments.PulseFragment
-import com.example.opiekun.Fragments.SeniorFragment
+import com.example.opiekun.fragments.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.pawegio.kandroid.find
 import com.pawegio.kandroid.toast
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.dialog_connection.*
 import re.robz.bottomnavigation.circularcolorreveal.BottomNavigationCircularColorReveal
 
@@ -47,19 +41,9 @@ class MainActivity : AppCompatActivity() {
             toast(R.string.successfull_login)
         }
         else {
-            val dialog = Dialog(this)
-            val yesBtn=find<Button>(R.id.yesBtnConnect)
-            dialog .requestWindowFeature(Window.FEATURE_NO_TITLE)
-            dialog .setCancelable(false)
-            dialog .setContentView(R.layout.dialog_connection)
-            yesBtn.setOnClickListener {
-               if(email.text!=null){
-
-                }
-               dialog .dismiss()
-
-            }
-            dialog .show()
+            /*val fragment = CreateFragment()
+            supportFragmentManager.beginTransaction().replace(R.id.container, fragment, fragment.javaClass.getSimpleName())
+                .commit()*/
             val editor = sharedPrefs.edit()
             editor.putBoolean("main", true)
             editor.apply()
