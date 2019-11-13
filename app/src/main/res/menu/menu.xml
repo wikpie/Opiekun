@@ -14,11 +14,6 @@
         android:title="@string/senior" />
 
     <item
-        android:id="@+id/menu_condition"
-        android:icon="@drawable/running_man"
-        android:title="@string/condition" />
-
-    <item
         android:id="@+id/menu_pulse"
         android:icon="@drawable/health_icon"
         android:title="@string/physical" />
