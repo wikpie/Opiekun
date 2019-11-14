@@ -3,7 +3,7 @@
     <string name="successfull_login">Pomyślnie zalogowano</string>
     <string name="location">Lokalizacja</string>
     <string name="condition">Kondycja</string>
-    <string name="physical">Puls</string>
+    <string name="physical">Stan</string>
     <string name="senior">Senior</string>
     <string name="appwidget_text">ALARM</string>
     <string name="add_widget">Add widget</string>

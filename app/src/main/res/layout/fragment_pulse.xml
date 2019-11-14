@@ -11,18 +11,20 @@
         android:id="@+id/linearLayoutMid"
         android:layout_width="407dp"
         android:layout_height="151dp"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:layout_marginTop="32dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayoutTop">
 
         <TextView
-            android:gravity="center"
             android:id="@+id/text_mid_top"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/inconsolata_bold"
+            android:gravity="center"
             android:text="TextView" />
 
         <TextView
@@ -30,6 +32,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/inconsolata"
             android:text="TextView" />
 
         <TextView
@@ -37,6 +40,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/inconsolata"
             android:text="TextView" />
     </LinearLayout>
 
@@ -44,17 +48,19 @@
         android:id="@+id/linearLayoutTop"
         android:layout_width="407dp"
         android:layout_height="151dp"
+        android:layout_marginTop="32dp"
         android:orientation="vertical"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/title">
 
         <TextView
             android:id="@+id/text_top_top"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/inconsolata_bold"
             android:gravity="center"
             android:text="TextView" />
 
@@ -63,6 +69,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/inconsolata"
             android:text="TextView" />
 
         <TextView
@@ -70,6 +77,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/inconsolata"
             android:text="TextView" />
     </LinearLayout>
 
@@ -77,6 +85,7 @@
         android:id="@+id/linearLayoutBot"
         android:layout_width="407dp"
         android:layout_height="151dp"
+        android:layout_marginTop="32dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -85,10 +94,11 @@
 
         <TextView
             android:id="@+id/text_bot_top"
-            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/inconsolata_bold"
+            android:gravity="center"
             android:text="TextView" />
 
         <TextView
@@ -96,6 +106,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/inconsolata"
             android:text="TextView" />
 
         <TextView
@@ -103,7 +114,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/inconsolata"
             android:text="TextView" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/title"
+        android:textSize="30sp"
+        android:textColor="@color/colorPrimary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Stan zdrowia użytkownika"
+        android:gravity="center"
+        android:fontFamily="@font/roboto_condensed_regular"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

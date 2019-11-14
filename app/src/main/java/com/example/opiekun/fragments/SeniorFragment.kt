@@ -33,7 +33,6 @@ class SeniorFragment : Fragment() {
     private lateinit var adapterSenior: SeniorAdapter
     private val ref1= FirebaseDatabase.getInstance().getReference("seniors")
     companion object {
-
         @JvmStatic
         fun newInstance(uid: String) = SeniorFragment().apply {
             arguments = Bundle().apply {
@@ -60,7 +59,6 @@ class SeniorFragment : Fragment() {
             adapterSenior=SeniorAdapter()
             adapter = adapterSenior
             (adapter as SeniorAdapter).onItemClick = {
-
                 model!!.setMsgCommunicator(it.id)
                 Log.d("pizdanad", it.id)
             }
@@ -76,17 +74,14 @@ class SeniorFragment : Fragment() {
             val builder1: AlertDialog.Builder = AlertDialog.Builder(context)
             builder1.setMessage("Wygenerowano id: $seniorID . Zapisz je i podaj seniorowi żeby podał je przy rejestracji")
             builder1.setCancelable(true)
-
             builder1.setPositiveButton("Dodaj") { dialog, _ ->
                 val nextSenior=seniorCount+1
                 ref.child("$nextSenior").setValue(seniorID)
                 dialog.cancel()
             }
-
             builder1.setNegativeButton("Wstecz") { dialog, _ ->
                 dialog.cancel()
             }
-
             val alert11: AlertDialog = builder1.create()
             alert11.show()
         }
@@ -102,14 +97,12 @@ class SeniorFragment : Fragment() {
                     }
                     addDataSet()
                 }
-
                 override fun onCancelled(databaseError: DatabaseError) {
                     Log.w("Main", "loadPost:onCancelled", databaseError.toException()!!)
                 }
             }
             val postListener = object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
-                    //getEmails(dataSnapshot.value as Map<String, Any>)
                     seniorCount=dataSnapshot.childrenCount
                     if(seniorCount.toInt()==0){
                         toast("Nie masz żadnego dodanego seniora")
@@ -119,13 +112,11 @@ class SeniorFragment : Fragment() {
                             val id=snap.value.toString()
                             seniorIds.add(id)
                             Log.d("seniorid", id)
-
                         }
                         model!!.setMsgCommunicator(seniorIds[0])
                     }
                     ref1.addValueEventListener(postListener1)
                 }
-
                 override fun onCancelled(databaseError: DatabaseError) {
                     Log.w("Main", "loadPost:onCancelled", databaseError.toException()!!)
                 }
@@ -135,7 +126,6 @@ class SeniorFragment : Fragment() {
     private fun addDataSet(){
         val list = ArrayList<Senior>()
         for (i in 0 until seniorCount ){
-
         list.add(
             Senior(
                 seniorNames[i.toInt()],
@@ -145,11 +135,8 @@ class SeniorFragment : Fragment() {
         )
             Log.d("seniuuur",seniorNames[i.toInt()])
         }
-
         adapterSenior.submitList(list)
         adapterSenior.notifyDataSetChanged()
     }
-
-
-    }
+}
 

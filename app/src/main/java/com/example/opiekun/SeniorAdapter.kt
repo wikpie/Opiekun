@@ -45,7 +45,6 @@ class SeniorAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             val requestOptions = RequestOptions()
                 .placeholder(R.drawable.ic_launcher_background)
                 .error(R.drawable.ic_launcher_background)
-
             Glide.with(itemView.context)
                 .applyDefaultRequestOptions(requestOptions)
                 .load(senior.image)
@@ -58,24 +57,6 @@ class SeniorAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             }
         }
     }
-
-
 }
-data class Senior(
-
-    var name: String,
-
-    var image: String,
-    var id:String
-
-
-
-) {
-
-    override fun toString(): String {
-        return "BlogPost(image='$image', username='$name')"
-    }
-
-
-}
+data class Senior(var name: String,var image: String, var id:String)
 

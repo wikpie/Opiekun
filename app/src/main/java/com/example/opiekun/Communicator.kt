@@ -1,6 +1,5 @@
 package com.example.opiekun
 
-
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 

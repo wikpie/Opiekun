@@ -40,15 +40,16 @@ class PulseFragment : Fragment() {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if(seniorUidd!=" "){
                     nowPulse=dataSnapshot.child("$seniorUidd/now/pulse").value.toString().toInt()
-                nowSteps=dataSnapshot.child("$seniorUidd/now/steps").value.toString().toInt()
-                if(dataSnapshot.hasChild("$seniorUidd/8am")) {
-                    eightPulse = dataSnapshot.child("$seniorUidd/8am/pulse").value.toString().toInt()
-                    eightSteps = dataSnapshot.child("$seniorUidd/8am/steps").value.toString().toInt()
+                    nowSteps=dataSnapshot.child("$seniorUidd/now/steps").value.toString().toInt()
+                    if(dataSnapshot.hasChild("$seniorUidd/8am")) {
+                        eightPulse = dataSnapshot.child("$seniorUidd/8am/pulse").value.toString().toInt()
+                        eightSteps = dataSnapshot.child("$seniorUidd/8am/steps").value.toString().toInt()
+                    }
+                    if(dataSnapshot.hasChild("$seniorUidd/3pm")){
+                        threePulse=dataSnapshot.child("$seniorUidd/3pm/pulse").value.toString().toInt()
+                        threeSteps=dataSnapshot.child("$seniorUidd/3pm/steps").value.toString().toInt()
+                    }
                 }
-                if(dataSnapshot.hasChild("$seniorUidd/3pm")){
-                threePulse=dataSnapshot.child("$seniorUidd/3pm/pulse").value.toString().toInt()
-                threeSteps=dataSnapshot.child("$seniorUidd/3pm/steps").value.toString().toInt()
-            }}
                 text_top_top.text="Teraz"
                 text_mid_top.text="O 8 rano"
                 text_bot_top.text="O 15 po południu"

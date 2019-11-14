@@ -30,15 +30,15 @@ class UserActivity : AppCompatActivity() {
             Log.d("senior", uid)
         }
         else {
-                val editor=sharedPrefsUserActivity.edit()
-                editor.putBoolean("main", true)
-                editor.apply()
-                uid = intent.getStringExtra("uid")
-                Log.d("seniorzysko", uid)
-                val editor1 = sharedPrefsUserActivity1.edit()
-                editor1.putString("uid", uid)
-                editor1.apply()
-            }
+            val editor=sharedPrefsUserActivity.edit()
+            editor.putBoolean("main", true)
+            editor.apply()
+            uid = intent.getStringExtra("uid")
+            Log.d("seniorzysko", uid)
+            val editor1 = sharedPrefsUserActivity1.edit()
+            editor1.putString("uid", uid)
+            editor1.apply()
+        }
         val fragment = SeniorFragment.newInstance(uid)
         supportFragmentManager.beginTransaction().replace(R.id.container, fragment, fragment.javaClass.simpleName)
             .commit()

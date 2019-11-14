@@ -33,7 +33,6 @@ class MainActivity : AppCompatActivity() {
                     val phonenumber=phonenumber.text.toString()
                     val uid=ref.push().key
                     uidd=uid.toString()
-                    //Log.d("senior",uidd)
                     ref.child("$uid/imie").setValue(name)
                     ref.child("$uid/email").setValue(email)
                     ref.child("$uid/phone").setValue(phonenumber)
@@ -46,10 +45,8 @@ class MainActivity : AppCompatActivity() {
                     LogIn()
                 }
             }
-
-
-            }
         }
+    }
     private fun LogIn() {
         uidd= sharedPrefs1.getString("uid"," ").toString()
         Log.d("seniorowo", uidd)
@@ -58,5 +55,5 @@ class MainActivity : AppCompatActivity() {
         }
         startActivity(intent)
     }
-    }
+}
 

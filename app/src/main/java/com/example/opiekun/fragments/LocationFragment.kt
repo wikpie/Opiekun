@@ -1,8 +1,5 @@
 package com.example.opiekun.fragments
 
-import android.location.Address
-import android.location.Geocoder
-import android.location.Location
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -13,7 +10,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.opiekun.Communicator
 import com.example.opiekun.R
-import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
@@ -26,7 +22,6 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.fragment_location.*
 
-import java.util.*
 
 class LocationFragment : Fragment(),OnMapReadyCallback {
     private lateinit var map: GoogleMap
@@ -49,32 +44,26 @@ class LocationFragment : Fragment(),OnMapReadyCallback {
             seniorUidd=t.toString()
             ref.addValueEventListener(postListener)
         })
-
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-    }
     override fun onMapReady(googleMap: GoogleMap) {
         map=googleMap
         Log.d("pid","Jazda on map ready")
-
     }
+
     private val postListener = object : ValueEventListener {
         override fun onDataChange(dataSnapshot: DataSnapshot) {
             if(seniorUidd!=" "){
-            Log.d("pidos", seniorUidd)
-            latitude=dataSnapshot.child("$seniorUidd/now/latitude").value.toString().toDouble()
-            Log.d("piddd", latitude.toString())
-            longitude=dataSnapshot.child("$seniorUidd/now/longitude").value.toString().toDouble()
-            location=dataSnapshot.child("$seniorUidd/now/location").value.toString()
-            val myPlace = LatLng(latitude, longitude)
-            map.addMarker(MarkerOptions().position(myPlace).title("My Favorite City"))
-            //map.moveCamera(CameraUpdateFactory.newLatLng(myPlace))
-            map.animateCamera(CameraUpdateFactory.newLatLngZoom((myPlace), 15f))
-            //map.animateCamera( CameraUpdateFactory.zoomTo( 15.0f ) )
-            text_gps.text= "Senior znajduje się na: $location"
-        }}
+                Log.d("pidos", seniorUidd)
+                latitude=dataSnapshot.child("$seniorUidd/now/latitude").value.toString().toDouble()
+                Log.d("piddd", latitude.toString())
+                longitude=dataSnapshot.child("$seniorUidd/now/longitude").value.toString().toDouble()
+                location=dataSnapshot.child("$seniorUidd/now/location").value.toString()
+                val myPlace = LatLng(latitude, longitude)
+                map.addMarker(MarkerOptions().position(myPlace).title("My Favorite City"))
+                map.animateCamera(CameraUpdateFactory.newLatLngZoom((myPlace), 15f))
+                text_gps.text= "Senior znajduje się na: $location"
+            }}
         override fun onCancelled(databaseError: DatabaseError) {
             Log.w("Main", "loadPost:onCancelled", databaseError.toException())
         }
