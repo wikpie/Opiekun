@@ -30,6 +30,7 @@ class LocationFragment : Fragment(),OnMapReadyCallback {
     private var latitude:Double=0.0
     private var longitude=0.0
     private lateinit var seniorUidd:String
+    private lateinit var seniorName:String
     private val ref= FirebaseDatabase.getInstance().getReference("seniors")
 
 
@@ -43,6 +44,10 @@ class LocationFragment : Fragment(),OnMapReadyCallback {
         model.message.observe(this, Observer<Any> { t ->
             seniorUidd=t.toString()
             ref.addValueEventListener(postListener)
+        })
+        model.message1.observe(this, Observer<Any> { t ->
+            seniorName=t.toString()
+            title.text="Wybrany senior: $seniorName"
         })
     }
 

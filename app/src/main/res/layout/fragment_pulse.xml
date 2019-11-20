@@ -6,49 +6,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-
-    <LinearLayout
-        android:id="@+id/linearLayoutMid"
-        android:layout_width="407dp"
-        android:layout_height="151dp"
-        android:layout_marginTop="32dp"
-        android:orientation="vertical"
+    <TextView
+        android:id="@+id/title"
+        android:textSize="30sp"
+        android:textColor="@color/colorPrimary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Stan zdrowia użytkownika"
+        android:gravity="center"
+        android:fontFamily="@font/roboto_condensed_regular"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayoutTop">
-
-        <TextView
-            android:id="@+id/text_mid_top"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:fontFamily="@font/inconsolata_bold"
-            android:gravity="center"
-            android:text="TextView" />
-
-        <TextView
-            android:id="@+id/text_mid_mid"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:fontFamily="@font/inconsolata"
-            android:text="TextView" />
-
-        <TextView
-            android:id="@+id/text_mid_bot"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:fontFamily="@font/inconsolata"
-            android:text="TextView" />
-    </LinearLayout>
-
+        app:layout_constraintTop_toTopOf="parent" />
     <LinearLayout
         android:id="@+id/linearLayoutTop"
         android:layout_width="407dp"
         android:layout_height="151dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="8dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -83,53 +58,28 @@
 
     <LinearLayout
         android:id="@+id/linearLayoutBot"
-        android:layout_width="407dp"
-        android:layout_height="151dp"
-        android:layout_marginTop="32dp"
+        android:layout_width="match_parent"
+        android:layout_height="437dp"
+        android:layout_marginTop="12dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayoutMid">
+        app:layout_constraintTop_toBottomOf="@id/linearLayoutTop">
 
-        <TextView
-            android:id="@+id/text_bot_top"
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/chart_pulse"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:fontFamily="@font/inconsolata_bold"
-            android:gravity="center"
-            android:text="TextView" />
+            android:layout_height="0dp"
+            android:layout_marginTop="24dp"
+            android:layout_weight="1" />
 
-        <TextView
-            android:id="@+id/text_bot_mid"
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/chart_home"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:fontFamily="@font/inconsolata"
-            android:text="TextView" />
-
-        <TextView
-            android:id="@+id/text_bot_bot"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:fontFamily="@font/inconsolata"
-            android:text="TextView" />
+            android:layout_height="0dp"
+            android:layout_marginTop="24dp"
+            android:layout_weight="1" />
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/title"
-        android:textSize="30sp"
-        android:textColor="@color/colorPrimary"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Stan zdrowia użytkownika"
-        android:gravity="center"
-        android:fontFamily="@font/roboto_condensed_regular"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

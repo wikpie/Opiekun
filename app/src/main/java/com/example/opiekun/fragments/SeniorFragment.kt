@@ -23,7 +23,7 @@ import kotlinx.android.synthetic.main.fragment_senior.*
 
 class SeniorFragment : Fragment() {
     val seniorNames=ArrayList<String>()
-    val seniorImages=ArrayList<Image>()
+    private val seniorImages= listOf<String>("https://cdn.pixabay.com/photo/2015/07/15/06/42/homeless-845709_960_720.jpg","https://cdn.pixabay.com/photo/2016/01/18/20/11/expression-1147288__340.jpg","https://cdn.pixabay.com/photo/2016/02/18/22/17/old-man-1208210__340.jpg","https://cdn.pixabay.com/photo/2015/02/19/13/15/indians-642075__340.jpg","https://cdn.pixabay.com/photo/2013/04/04/06/42/dependent-100343__340.jpg","https://cdn.pixabay.com/photo/2014/05/22/16/57/man-351281__340.jpg")
     val seniorIds=ArrayList<String>()
     var seniorCount:Long=0
     private var uid=" "
@@ -60,6 +60,7 @@ class SeniorFragment : Fragment() {
             adapter = adapterSenior
             (adapter as SeniorAdapter).onItemClick = {
                 model!!.setMsgCommunicator(it.id)
+                model!!.setMsgCommunicator1(it.name)
                 Log.d("pizdanad", it.id)
             }
         }
@@ -69,6 +70,7 @@ class SeniorFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         model= ViewModelProviders.of(activity!!).get(Communicator::class.java)
         model!!.setMsgCommunicator(" ")
+        model!!.setMsgCommunicator1(" ")
         add_button.setOnClickListener{
             val seniorID=java.util.UUID.randomUUID().toString()
             val builder1: AlertDialog.Builder = AlertDialog.Builder(context)
@@ -129,7 +131,7 @@ class SeniorFragment : Fragment() {
         list.add(
             Senior(
                 seniorNames[i.toInt()],
-                "https://media.istockphoto.com/photos/portrait-of-smiling-handsome-man-in-blue-tshirt-standing-with-crossed-picture-id1045886560?k=6&m=1045886560&s=612x612&w=0&h=hXrxai1QKrfdqWdORI4TZ-M0ceCVakt4o6532vHaS3I=",
+                seniorImages[i.toInt()],
                 seniorIds[i.toInt()]
             )
         )
