@@ -59,13 +59,14 @@ class PulseFragment : Fragment() {
         val model= ViewModelProviders.of(activity!!).get(Communicator::class.java)
         model.message.observe(this, Observer<Any> { t ->
             seniorUidd=t.toString()
+            ref.addValueEventListener(postListener)
         })
         model.message1.observe(this, Observer<Any> { t ->
             seniorName=t.toString()
             title.text="Wybrany senior: $seniorName"
         })
 
-        ref.addValueEventListener(postListener)
+
 
 
     }
@@ -83,14 +84,19 @@ class PulseFragment : Fragment() {
                 for(i in 0..23){
                     var j=i.toString()
                     pulseList.add(dataSnapshot.child("$seniorUidd/$j/pulse").value.toString().toInt())
-                    var latitude=dataSnapshot.child("$seniorUidd/$i/latitude").value.toString().toDouble()
-                    var longitude=dataSnapshot.child("$seniorUidd/$i/longitude").value.toString().toDouble()
+                    Log.d("henio_puls",pulseList.toString())
+                    var latitude=dataSnapshot.child("$seniorUidd/$j/latitude").value.toString().toDouble()
+                    var longitude=dataSnapshot.child("$seniorUidd/$j/longitude").value.toString().toDouble()
+                    Log.d("henio_puls",latitude.toString())
+                    Log.d("henio_puls",longitude.toString())
                     var addresses=geocoder.getFromLocation(latitude,longitude,1)
+                    if(addresses.isNotEmpty()){
                     if(addresses[0].getAddressLine(0) ==seniorHome){
                         homeList.add(0)
                     }
                     else homeList.add(1)
-                    Log.d("henio_puls",pulseList.toString())
+                    }
+                    else homeList.add(1)
                     Log.d("henio_dom",homeList.toString())
                 }
                 if(nowPulse<minPulse || nowPulse>maxPulse){
