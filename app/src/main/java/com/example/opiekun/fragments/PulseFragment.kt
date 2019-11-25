@@ -1,11 +1,16 @@
 package com.example.opiekun.fragments
 
+import android.content.Context
 import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
+import android.os.VibrationEffect
+import android.os.Vibrator
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -78,6 +83,14 @@ class PulseFragment : Fragment() {
                     }
                     if(nowPulse<minPulse || nowPulse>maxPulse){
                         text_top_mid.setTextColor(Color.parseColor("#FF0000"))
+                        val vibrator = context?.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+                        if (vibrator.hasVibrator()) { // Vibrator availability checking
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                                vibrator.vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE)) // New vibrate method for API Level 26 or higher
+                            } else {
+                                vibrator.vibrate(500) // Vibrate method for below API Level 26
+                            }
+                        }
                     }
                     else text_top_mid.setTextColor(Color.parseColor("#00FF00"))
                     text_top_top.text="Teraz"
