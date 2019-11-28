@@ -7,7 +7,6 @@ import android.util.Log
 import com.google.firebase.database.FirebaseDatabase
 import com.pawegio.kandroid.toast
 import kotlinx.android.synthetic.main.activity_main.*
-import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         if (sharedPrefs.getBoolean("main", false)) {
             LogIn()
-            Log.d("seniorita",uidd)
+            Log.d("caregiver",uidd)
             toast(R.string.successfull_login)
         }
         else {
@@ -49,7 +48,7 @@ class MainActivity : AppCompatActivity() {
     }
     private fun LogIn() {
         uidd= sharedPrefs1.getString("uid"," ").toString()
-        Log.d("seniorowo", uidd)
+        Log.d("caregiver", uidd)
         val intent= Intent(this, UserActivity::class.java).also{
             it.putExtra("uid",uidd)
         }

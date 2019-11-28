@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -13,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:text="Stan zdrowia użytkownika"
+        android:text="@string/stan_zdrowia_uzytkownika"
         android:gravity="center"
         android:fontFamily="@font/roboto_condensed_regular"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,7 +37,7 @@
             android:textSize="20sp"
             android:fontFamily="@font/inconsolata_bold"
             android:gravity="center"
-            android:text="TextView" />
+            android:text="" />
 
         <TextView
             android:id="@+id/text_top_mid"
@@ -47,7 +46,7 @@
             android:layout_weight="1"
             android:textSize="20sp"
             android:fontFamily="@font/inconsolata"
-            android:text="TextView" />
+            android:text="" />
 
         <TextView
             android:id="@+id/text_top_bot"
@@ -56,15 +55,16 @@
             android:layout_weight="1"
             android:textSize="20sp"
             android:fontFamily="@font/inconsolata"
-            android:text="TextView" />
+            android:text="" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayoutBot"
-        android:layout_width="match_parent"
-        android:layout_height="437dp"
-        android:layout_marginTop="12dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
         android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"

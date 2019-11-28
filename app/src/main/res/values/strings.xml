@@ -7,5 +7,6 @@
     <string name="senior">Senior</string>
     <string name="appwidget_text">ALARM</string>
     <string name="add_widget">Add widget</string>
+    <string name="stan_zdrowia_uzytkownika">Stan zdrowia użytkownika</string>
 
 </resources>

@@ -33,7 +33,7 @@ class LocationFragment : Fragment(),OnMapReadyCallback {
     private lateinit var geocoder:Geocoder
     private lateinit var seniorUidd:String
     private lateinit var seniorName:String
-    private val ref= FirebaseDatabase.getInstance().getReference("seniors")
+
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
@@ -46,6 +46,7 @@ class LocationFragment : Fragment(),OnMapReadyCallback {
         val model= ViewModelProviders.of(activity!!).get(Communicator::class.java)
         model.message.observe(this, Observer<Any> { t ->
             seniorUidd=t.toString()
+            val ref= FirebaseDatabase.getInstance().getReference("seniors/$seniorUidd/hour_info/now")
             ref.addValueEventListener(postListener)
         })
         model.message1.observe(this, Observer<Any> { t ->
@@ -57,19 +58,19 @@ class LocationFragment : Fragment(),OnMapReadyCallback {
 
     override fun onMapReady(googleMap: GoogleMap) {
         map=googleMap
-        Log.d("pid","Jazda on map ready")
+        Log.d("mapa","Mapa jest gotowa")
     }
 
     private val postListener = object : ValueEventListener {
         override fun onDataChange(dataSnapshot: DataSnapshot) {
             if(seniorUidd!=" "){
-                Log.d("pidos", seniorUidd)
-                latitude=dataSnapshot.child("$seniorUidd/now/latitude").value.toString().toDouble()
-                Log.d("piddd", latitude.toString())
-                longitude=dataSnapshot.child("$seniorUidd/now/longitude").value.toString().toDouble()
+                Log.d("senior", seniorUidd)
+                latitude=dataSnapshot.child("latitude").value.toString().toDouble()
+                Log.d("senior", latitude.toString())
+                longitude=dataSnapshot.child("longitude").value.toString().toDouble()
                 val myPlace = LatLng(latitude, longitude)
-                var addresses=geocoder.getFromLocation(latitude,longitude,1)
-                var address= addresses[0].getAddressLine(0)
+                val addresses=geocoder.getFromLocation(latitude,longitude,1)
+                val address= addresses[0].getAddressLine(0)
                 Log.d("lokalizacja", addresses.toString())
                 Log.d("lokalizacja", address)
                 map.addMarker(MarkerOptions().position(myPlace).title("My Favorite City"))

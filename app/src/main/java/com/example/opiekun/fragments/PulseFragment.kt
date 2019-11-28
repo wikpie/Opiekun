@@ -45,7 +45,6 @@ class PulseFragment : Fragment() {
     private val maxPulse=80
     private lateinit var pulseChart:LineChart
     private lateinit var homeChart:LineChart
-    private val ref= FirebaseDatabase.getInstance().getReference("seniors")
     private lateinit var geocoder: Geocoder
 
 
@@ -59,6 +58,7 @@ class PulseFragment : Fragment() {
         val model= ViewModelProviders.of(activity!!).get(Communicator::class.java)
         model.message.observe(this, Observer<Any> { t ->
             seniorUidd=t.toString()
+            val ref= FirebaseDatabase.getInstance().getReference("seniors/$seniorUidd")
             ref.addValueEventListener(postListener)
         })
         model.message1.observe(this, Observer<Any> { t ->
@@ -74,22 +74,22 @@ class PulseFragment : Fragment() {
         override fun onDataChange(dataSnapshot: DataSnapshot) {
             if(seniorUidd!=" "){
                 //te są najważniejsze
-                seniorHome=dataSnapshot.child("$seniorUidd/dom").value.toString()
-                nowPulse=dataSnapshot.child("$seniorUidd/now/pulse").value.toString().toInt()
-                nowSteps=dataSnapshot.child("$seniorUidd/now/steps").value.toString().toInt()
+                seniorHome=dataSnapshot.child("dom").value.toString()
+                nowPulse=dataSnapshot.child("hour_info/now/pulse").value.toString().toInt()
+                nowSteps=dataSnapshot.child("hour_info/now/steps").value.toString().toInt()
                 Log.d("henio_puls_teraz",nowPulse.toString())
                 Log.d("henio_dom",seniorHome)
-                Log.d("henio_korki_teraz",nowSteps.toString())
+                Log.d("henio_kroki_teraz",nowSteps.toString())
                 //tu kolejno
                 for(i in 0..23){
-                    var j=i.toString()
-                    pulseList.add(dataSnapshot.child("$seniorUidd/$j/pulse").value.toString().toInt())
+                    val j=i.toString()
+                    pulseList.add(dataSnapshot.child("hour_info/$j/pulse").value.toString().toInt())
                     Log.d("henio_puls",pulseList.toString())
-                    var latitude=dataSnapshot.child("$seniorUidd/$j/latitude").value.toString().toDouble()
-                    var longitude=dataSnapshot.child("$seniorUidd/$j/longitude").value.toString().toDouble()
+                    val latitude=dataSnapshot.child("hour_info/$j/latitude").value.toString().toDouble()
+                    val longitude=dataSnapshot.child("hour_info/$j/longitude").value.toString().toDouble()
                     Log.d("henio_puls",latitude.toString())
                     Log.d("henio_puls",longitude.toString())
-                    var addresses=geocoder.getFromLocation(latitude,longitude,1)
+                    val addresses=geocoder.getFromLocation(latitude,longitude,1)
                     if(addresses.isNotEmpty()){
                     if(addresses[0].getAddressLine(0) ==seniorHome){
                         homeList.add(0)
@@ -105,8 +105,6 @@ class PulseFragment : Fragment() {
                     if (vibrator.hasVibrator()) { // Vibrator availability checking
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                             vibrator.vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE)) // New vibrate method for API Level 26 or higher
-                        } else {
-                            vibrator.vibrate(500) // Vibrate method for below API Level 26
                         }
                     }
                 }
@@ -115,8 +113,8 @@ class PulseFragment : Fragment() {
                 text_top_mid.text="Puls: $nowPulse"
                 text_top_bot.text="Kroki: $nowSteps"
                 for(i in 0..23){
-                    var entriesPulse=Entry(i.toFloat(),pulseList[i].toFloat())
-                    var entriesHome=Entry(i.toFloat(),homeList[i].toFloat())
+                    val entriesPulse=Entry(i.toFloat(),pulseList[i].toFloat())
+                    val entriesHome=Entry(i.toFloat(),homeList[i].toFloat())
                     entryListPulse.add(entriesPulse)
                     entryListHome.add(entriesHome)
                 }
@@ -132,13 +130,15 @@ class PulseFragment : Fragment() {
                 val lineDataHome=LineData(dataSetHome)
                 pulseChart.data=lineDataPulse
                 homeChart.data=lineDataHome
+                homeChart.description.isEnabled = false
+                pulseChart.description.isEnabled = false
                 pulseChart.invalidate()
                 homeChart.invalidate()
             }
 
         }
         override fun onCancelled(databaseError: DatabaseError) {
-            Log.w("Main", "loadPost:onCancelled", databaseError.toException()!!)
+            Log.w("Main", "loadPost:onCancelled", databaseError.toException())
         }
     }
 }
